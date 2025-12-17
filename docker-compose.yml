@@ -1,0 +1,23 @@
+services:
+  postgres-microservice:
+    image: postgres:17-alpine
+    container_name: postgres-services
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=gad-dev
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=university_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./infra/postgres/init-scripts:/docker-entrypoint-initdb.d
+      - postgres_data_services:/var/lib/postgresql/data
+    networks:
+      - app-bank-network
+
+volumes:
+  postgres_data_services:
+
+networks:
+  app-bank-network:
+    driver: bridge
