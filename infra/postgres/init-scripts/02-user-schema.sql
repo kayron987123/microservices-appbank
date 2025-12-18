@@ -34,7 +34,7 @@ CREATE TABLE user_roles
     PRIMARY KEY (user_id, role_id),
     FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
     FOREIGN KEY (role_id) REFERENCES roles (id) ON DELETE CASCADE
-)
+);
 
 CREATE TABLE user_documents
 (
@@ -63,3 +63,9 @@ CREATE TABLE outbox_events
 
 CREATE INDEX idx_users_email ON users (email);
 CREATE INDEX idx_users_status ON users (status);
+
+
+INSERT INTO roles (id, name, description) VALUES
+    (gen_random_uuid(), 'ROLE_ADMIN', 'Administrator with full access'),
+    (gen_random_uuid(), 'ROLE_USER', 'Regular user with limited access'),
+    (gen_random_uuid(), 'MODERATOR', 'User with moderation privileges');

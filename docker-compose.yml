@@ -5,8 +5,7 @@ services:
     restart: unless-stopped
     environment:
       - POSTGRES_USER=gad-dev
-      - POSTGRES_PASSWORD=123456
-      - POSTGRES_DB=university_db
+      - POSTGRES_PASSWORD=123456789
     ports:
       - "5432:5432"
     volumes:

@@ -1,8 +1,5 @@
-CREATE
-DATABASE notification_service_db;
-
-USE
-notification_service_db;
+CREATE DATABASE notification_service_db;
+\c notification_service_db;
 
 CREATE TABLE notifications
 (

@@ -1,8 +1,5 @@
-CREATE
-DATABASE account_service_db;
-
-USE
-account_service_db;
+CREATE DATABASE account_service_db;
+\c account_service_db;
 
 CREATE TABLE accounts
 (

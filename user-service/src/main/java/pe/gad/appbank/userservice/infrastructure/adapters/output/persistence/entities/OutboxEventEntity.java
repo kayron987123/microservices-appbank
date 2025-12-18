@@ -3,6 +3,8 @@ package pe.gad.appbank.userservice.infrastructure.adapters.output.persistence.en
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -14,7 +16,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
-public class OutboxEventsEntity {
+public class OutboxEventEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -28,6 +30,7 @@ public class OutboxEventsEntity {
     @Column(name = "event_type", nullable = false)
     private String eventType;
 
+    @JdbcTypeCode(SqlTypes.JSON)
     @Column(nullable = false, columnDefinition = "jsonb")
     private String payload;
 

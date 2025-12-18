@@ -1,8 +1,5 @@
-CREATE
-DATABASE card_service_db;
-
-USE
-card_service_db;
+CREATE DATABASE card_service_db;
+\c card_service_db;
 
 CREATE TABLE card_types
 (
