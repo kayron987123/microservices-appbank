@@ -25,7 +25,7 @@ CREATE TABLE cards
     card_holder_name VARCHAR(100)       NOT NULL,
     expiry_month     INT                NOT NULL,
     expiry_year      INT                NOT NULL,
-    cvv_hash         VARCHAR(255)       NOT NULL,
+    cvv              VARCHAR(255)       NOT NULL,
     status           VARCHAR(20)        NOT NULL DEFAULT 'ACTIVE',
     daily_limit      DECIMAL(15, 2)     NOT NULL DEFAULT 5000.00,
     created_at       TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -65,3 +65,8 @@ CREATE TABLE outbox_events
 
 CREATE INDEX idx_cards_account ON cards (account_id);
 CREATE INDEX idx_card_transactions_created ON card_transactions (created_at DESC);
+
+INSERT INTO card_types (id, name, card_network, card_category, annual_fee, description, is_active, created_at)
+VALUES
+    (gen_random_uuid(), 'VISA_DEBIT_CLASSIC', 'VISA', 'DEBIT', 0.00, 'Tarjeta de débito estándar', true, NOW()),
+    (gen_random_uuid(), 'MASTERCARD_GOLD', 'MASTERCARD', 'CREDIT', 50.00, 'Tarjeta de crédito Gold', true, NOW());

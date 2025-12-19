@@ -33,7 +33,7 @@ public class UserRestAdapter {
         UserDto userCreated = createUserUseCase.createUser(command);
         UserResponse userResponse = userRestMapper.toResponse(userCreated);
 
-        URI location = URI.create("/users" + userResponse.id());
+        URI location = URI.create("/users/" + userResponse.id());
         DataResponse<UserResponse> responseBody = DataResponse.<UserResponse>builder()
                 .status(HttpStatus.CREATED.value())
                 .message("User created successfully")
